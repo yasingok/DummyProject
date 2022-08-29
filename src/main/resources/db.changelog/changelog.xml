@@ -1,0 +1,76 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="author" id="pizza_1">
+        <createTable tableName="pizza">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="name" type="VARCHAR(20)" />
+        </createTable>
+    </changeSet>
+
+    <changeSet author="author" id="pizza_2">
+        <addUniqueConstraint columnNames="name" constraintName="UK_pizza_name" tableName="pizza" />
+    </changeSet>
+
+    <changeSet author="author" id="pizza_crust_1">
+        <createTable tableName="pizza_crust">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="crust" type="VARCHAR(20)" />
+        </createTable>
+    </changeSet>
+
+    <changeSet author="author" id="pizza_crust_2">
+        <addUniqueConstraint columnNames="crust" constraintName="UK_pizza_crust_name" tableName="pizza_crust" />
+    </changeSet>
+
+    <changeSet author="author" id="pizza_size_1">
+        <createTable tableName="pizza_size">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="size" type="VARCHAR(20)" />
+        </createTable>
+    </changeSet>
+
+    <changeSet author="author" id="pizza_size_2">
+        <addUniqueConstraint columnNames="size" constraintName="UK_pizza_size_name" tableName="pizza_size" />
+    </changeSet>
+
+    <changeSet author="author" id="pizza_3">
+        <comment>Inserting Default supporting pizzas</comment>
+        <insert tableName="pizza">
+            <column name="name" value="Hawaii"/>
+        </insert>
+        <insert tableName="pizza">
+            <column name="name" value="Regina"/>
+        </insert>
+        <insert tableName="pizza">
+            <column name="name" value="Quattro-Formaggi"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="author" id="pizza_crust_3">
+        <comment>Inserting Default supporting pizzas</comment>
+        <insert tableName="pizza_crust">
+            <column name="crust" value="Thin"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="author" id="pizza_size_3">
+        <comment>Inserting Default supporting pizzas</comment>
+        <insert tableName="pizza_size">
+            <column name="size" value="Large"/>
+        </insert>
+        <insert tableName="pizza_size">
+            <column name="size" value="Medium"/>
+        </insert>
+    </changeSet>
+
+
+</databaseChangeLog>
